@@ -1,12 +1,31 @@
+html {
+    background: #1b1938;
+}
+
 body {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: center;
+    align-content: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
 }
 
 
-h1 {font-family: system-ui; text-align:center}
+.IroSliderGradient {
+    border-radius: 12px !important;
+}
+
+
+h1 {
+    font-family: system-ui;
+    text-align: center;
+    margin: 0 0 40px;
+    color: #eeedff;
+}
+
 .flex {
   display:flex;
   flex-direction: column;
@@ -83,7 +102,7 @@ input#hexInput {
     font-family: system-ui;
     justify-content: center;
     gap: 40px;
-    align-items: center;
+    align-content: flex-start;
 }
 
 
@@ -101,7 +120,7 @@ input#hexInput {
     border-radius: 10px;
     text-align: center;
     width: 180px;
-    margin: 10px 0;
+    margin:  0;
     display: flex;
     flex-direction: column;
     align-items: center;
