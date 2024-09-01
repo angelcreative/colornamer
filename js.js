@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var colorWheel = new iro.ColorPicker(colorWheelContainer, {
         width: 200,
-        color: "#91baad"
+        color: "#a2c299"
     });
 
     function updateHarmonyColors(baseColor) {
@@ -347,30 +347,32 @@ function applyDynamicStyles(colorPalette) {
         const colorName = `color-${index + 1}`; // Crear un nombre dinámico basado en el índice
 
         // Asigna las variables CSS dinámicamente
-        root.style.setProperty(`--background-${colorName}`, palette["100"]);
+        root.style.setProperty(`--background-${colorName}-50`, palette["50"]);
+        root.style.setProperty(`--background-${colorName}-100`, palette["100"]);
         root.style.setProperty(`--color-${colorName}`, palette["800"]);
         root.style.setProperty(`--button-${colorName}`, palette["600"]);
 
         // Log para verificar que las variables están siendo asignadas
-        console.log(`--background-${colorName}: ${palette["100"]}`);
+        console.log(`--background-${colorName}-50: ${palette["50"]}`);
+        console.log(`--background-${colorName}-100: ${palette["100"]}`);
         console.log(`--color-${colorName}: ${palette["800"]}`);
         console.log(`--button-${colorName}: ${palette["600"]}`);
     });
 
-    // Opcional: Asignar las variables CSS estáticas a las dinámicas
-    root.style.setProperty('--background-primary', 'var(--background-color-1)');
+    // Asignar las variables CSS estáticas a las dinámicas usando las variables con el valor de "50"
+    root.style.setProperty('--background-primary', 'var(--background-color-1-50)');
     root.style.setProperty('--color-primary', 'var(--color-color-1)');
     root.style.setProperty('--button-primary', 'var(--button-color-1)');
 
-    root.style.setProperty('--background-secondary', 'var(--background-color-2)');
+    root.style.setProperty('--background-secondary', 'var(--background-color-2-50)');
     root.style.setProperty('--color-secondary', 'var(--color-color-2)');
     root.style.setProperty('--button-secondary', 'var(--button-color-2)');
 
-    root.style.setProperty('--background-tertiary', 'var(--background-color-3)');
+    root.style.setProperty('--background-tertiary', 'var(--background-color-3-50)');
     root.style.setProperty('--color-tertiary', 'var(--color-color-3)');
     root.style.setProperty('--button-tertiary', 'var(--button-color-3)');
 
-    root.style.setProperty('--background-quaternary', 'var(--background-color-4)');
+    root.style.setProperty('--background-quaternary', 'var(--background-color-4-50)');
     root.style.setProperty('--color-quaternary', 'var(--color-color-4)');
     root.style.setProperty('--button-quaternary', 'var(--button-color-4)');
 }
