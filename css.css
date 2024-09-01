@@ -29,7 +29,7 @@ sub, a {
 h1 {
     font-family: system-ui;
     text-align: center;
-    margin: 0 0 40px;
+    margin: 50px auto 30px;
     color: #000;
 }
 
