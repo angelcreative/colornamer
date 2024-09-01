@@ -1,5 +1,5 @@
 html {
-    background: #1b1938;
+    background: #f7f7f7;
 }
 
 body {
@@ -8,9 +8,10 @@ body {
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
-    height: 100vh;
+    background:#f7f7f7;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
+  max-width:70rem
 }
 sub, a {
     display: inline-block;
@@ -29,7 +30,7 @@ h1 {
     font-family: system-ui;
     text-align: center;
     margin: 0 0 40px;
-    color: #eeedff;
+    color: #000;
 }
 
 .flex {
@@ -44,14 +45,12 @@ input#hexInput {
 #harmonyType, select, input {
     padding: 12px;
     border: none;
-    background: #f0f0f0;
+    background: #fff;
     border-radius: 12px;
     width: 210px;
     margin: 0 auto;
 }
-.colorCard > div {
-  display:none
-}
+
 .colorIndicator {
             position: absolute;
             border: 2px solid #fff;
@@ -122,22 +121,69 @@ input#hexInput {
 }
 
 .colorCard {
-  padding: 10px;
+    padding: 0 30px;
     border-radius: 10px;
     text-align: center;
-    width: 180px;
-    margin:  0;
+    width: 100%;
+    margin: 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     border: 1px solid rgba(0, 0, 0, .1);
-    justify-content: center;
-    height: 400px;
+    justify-content: space-between;
+    height: max-content;
+    gap: 20px;
 }
 
 .colorCard > div {
   border-radius:50%
 }
+
+.gradientCard p {
+    font-size: 12px; /* Ajusta el tamaño del texto dentro de las tarjetas de gradiente */
+    margin: 2px 0;   /* Reduce el margen entre los párrafos */
+}
+
+.gradientCard {
+    height: 80px; /* Opcional: puedes ajustar la altura si es necesario */
+    width: 80px;   /* Opcional: ajustar el ancho de las tarjetas */
+  padding: 10px;
+    gap: 0;
+}
+
+
+/* Estilos generales para la paleta */
+#paletteContainer h4 {
+    font-size: 18px;
+    font-weight: normal;
+    margin-bottom: 10px;
+  display:none
+}
+
+/* Estilos para las tarjetas pequeñas */
+.gradientCard {
+    width: 80px;
+    height: 100px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333; /* Default text color, will be overridden based on luminance */
+}
+
+.gradientCard div {
+    margin: 2px 0;
+    text-align: center;
+}
+
+/* Resaltar el color coincidente */
+.gradientCard.highlight {
+    border: 3px solid #000000;
+}
+
 
 @media only screen and (max-width: 768px) {
     body {
@@ -172,5 +218,10 @@ input#hexInput {
         justify-content: flex-start;
         gap: 10px;
     }
+  
+  .gradientCard {
+        width: 60px;
+        height: 80px;
+        font-size: 10px;
+    }
 }
-
