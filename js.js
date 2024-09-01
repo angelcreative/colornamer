@@ -207,3 +207,137 @@ function updateHarmonyColors(baseColor) {
 
     updateHarmonyColors(colorWheel.color.hexString);
 });
+
+//export
+
+function createSVGPalette(baseColors) {
+    const svgNS = "http://www.w3.org/2000/svg"; 
+    const svg = document.createElementNS(svgNS, "svg");
+    const totalHeight = baseColors.length * 120 + 20; // Calculate height based on number of palettes
+    svg.setAttribute("width", "810");
+    svg.setAttribute("height", `${totalHeight}`);
+
+    baseColors.forEach((color, index) => {
+        let colorName = ntc.name(color)[1];
+        colorName = colorName.replace(/-color.*$/i, '').trim(); 
+
+        // Create a group element for each color's palette
+        const group = document.createElementNS(svgNS, "g");
+        group.setAttribute("transform", `translate(0, ${index * 120 + 20})`);
+
+        // Add the color name as a text element
+        const text = document.createElementNS(svgNS, "text");
+        text.setAttribute("x", "10");
+        text.setAttribute("y", "30");
+        text.setAttribute("font-size", "20");
+        text.setAttribute("font-family", "Arial");
+        text.textContent = colorName;
+        group.appendChild(text);
+
+        // Create rectangles for the color shades (from 50 to 900)
+        const shades = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"];
+        shades.forEach((shade, i) => {
+            const rect = document.createElementNS(svgNS, "rect");
+            const lightness = 1 - (i * 0.1);
+            const paletteColor = chroma(color).set('hsl.l', i === 0 ? 0.95 : lightness).hex();
+            
+            rect.setAttribute("x", `${80 * i + 10}`);
+            rect.setAttribute("y", "40");
+            rect.setAttribute("width", "70");
+            rect.setAttribute("height", "70");
+            rect.setAttribute("fill", paletteColor);
+            group.appendChild(rect);
+
+            // Add the shade number as a text element on each rectangle
+            const shadeText = document.createElementNS(svgNS, "text");
+            shadeText.setAttribute("x", `${80 * i + 45}`);
+            shadeText.setAttribute("y", "90");
+            shadeText.setAttribute("font-size", "14");
+            shadeText.setAttribute("font-family", "Arial");
+            shadeText.setAttribute("text-anchor", "middle");
+            shadeText.setAttribute("fill", chroma(paletteColor).luminance() > 0.5 ? '#333' : '#fff');
+            shadeText.textContent = shade;
+            group.appendChild(shadeText);
+        });
+
+        svg.appendChild(group);
+    });
+
+    return svg;
+}
+
+function exportPalettesAsSVG() {
+    const baseColors = getBaseColors(); // Get the base colors used to generate the palettes
+    const svg = createSVGPalette(baseColors);
+
+    const serializer = new XMLSerializer();
+    const svgBlob = new Blob([serializer.serializeToString(svg)], { type: "image/svg+xml" });
+    const url = URL.createObjectURL(svgBlob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "color_palettes.svg";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+}
+
+function getBaseColors() {
+    // Example of extracting base colors from your existing palettes
+    // Modify this based on your actual data structure.
+    // This function should return an array of base color hex codes.
+    return [
+        "#FF0000", // Example: Replace with actual base colors
+        "#00FFFF",
+        // ... other base colors
+    ];
+}
+
+// Add the export button to the DOM
+document.getElementById('exportSvgButton').addEventListener('click', exportPalettesAsSVG);
+
+
+// Tailwind hex
+
+function generatePaletteJSON(baseColors) {
+    const palettes = {};
+
+    baseColors.forEach(color => {
+        let colorName = ntc.name(color)[1];
+        colorName = colorName.replace(/-color.*$/i, '').trim().toLowerCase().replace(/\s+/g, '-'); // Format color name for JSON key
+
+        const palette = {};
+        const shades = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "950"];
+
+        shades.forEach((shade, i) => {
+            const lightness = 1 - (i * 0.1);
+            const paletteColor = chroma(color).set('hsl.l', i === 0 ? 0.95 : lightness).hex();
+            palette[shade] = paletteColor.toLowerCase();
+        });
+
+        palettes[colorName] = palette;
+    });
+
+    return palettes;
+}
+
+function exportPalettesAsJSON() {
+    const baseColors = getBaseColors(); // Get the base colors used to generate the palettes
+    const paletteJSON = generatePaletteJSON(baseColors);
+
+    const jsonBlob = new Blob([JSON.stringify(paletteJSON, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(jsonBlob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "color_palettes.json";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+}
+
+
+document.getElementById('exportJsonButton').addEventListener('click', exportPalettesAsJSON);
+
