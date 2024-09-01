@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     var colorWheelContainer = document.getElementById('colorWheelContainer');
     var hexInput = document.getElementById('hexInput');
+    var currentPalettes = [];  // Store currently displayed palettes
 
     var colorWheel = new iro.ColorPicker(colorWheelContainer, {
         width: 200,
@@ -12,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const colors = getHarmonyColors(baseColor, harmonyType);
         displayColors(colors);
         updateColorIndicators(colors);
-        displayColorCards(colors);
+        updateDisplayedPalettes(colors);
+        displayColorCards(colors, baseColor);
     }
 
     function getHarmonyColors(color, type) {
@@ -77,84 +79,75 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-function generateColorPalettes(baseColors, selectedColor) {
-    const paletteContainer = document.createElement('div');
-    paletteContainer.id = 'paletteContainer';
-    paletteContainer.style.display = 'flex';
-    paletteContainer.style.flexDirection = 'column';
-    paletteContainer.style.gap = '20px';
-    paletteContainer.style.width = '100%';
+    function generateColorPalettes(baseColors, selectedColor) {
+        const paletteContainer = document.createElement('div');
+        paletteContainer.id = 'paletteContainer';
+        paletteContainer.style.display = 'flex';
+        paletteContainer.style.flexDirection = 'column';
+        paletteContainer.style.gap = '20px';
+        paletteContainer.style.width = '100%';
 
-    baseColors.forEach(color => {
-        let colorName = ntc.name(color)[1];
-        colorName = colorName.replace(/-color.*$/i, '').trim(); // Remove "-color" and everything after it, case-insensitive
+        baseColors.forEach(color => {
+            let colorName = ntc.name(color)[1];
+            colorName = colorName.replace(/-color.*$/i, '').trim();
 
-        const palette = document.createElement('div');
-        palette.style.display = 'flex';
-        palette.style.flexDirection = 'row';
-        palette.style.gap = '10px';
-        palette.style.flexWrap = 'wrap';
+            const palette = document.createElement('div');
+            palette.style.display = 'flex';
+            palette.style.flexDirection = 'row';
+            palette.style.gap = '10px';
+            palette.style.flexWrap = 'wrap';
 
-        // Create the lightest value (50)
-        let paletteColor = chroma(color).set('hsl.l', 0.95).hex(); // Very light color
-        let hexColor = paletteColor.toUpperCase();
-        let card = createColorCard('50', hexColor, paletteColor, selectedColor);
-        palette.appendChild(card);
-
-        for (let i = 1; i <= 9; i++) {  // Light to dark (100 to 900)
-            const lightness = 1 - (i * 0.1);
-            paletteColor = chroma(color).set('hsl.l', lightness).hex();
-            hexColor = paletteColor.toUpperCase();
-            card = createColorCard(`${i * 100}`, hexColor, paletteColor, selectedColor);
+            // Create the lightest value (50)
+            let paletteColor = chroma(color).set('hsl.l', 0.95).hex();
+            let hexColor = paletteColor.toUpperCase();
+            let card = createColorCard('50', hexColor, paletteColor, selectedColor);
             palette.appendChild(card);
-        }
 
-        const paletteTitle = document.createElement('h4');
-        paletteTitle.textContent = colorName;  // Use the cleaned-up color name
-        paletteContainer.appendChild(paletteTitle);
-        paletteContainer.appendChild(palette);
-    });
+            for (let i = 1; i <= 9; i++) {  // Light to dark (100 to 900)
+                const lightness = 1 - (i * 0.1);
+                paletteColor = chroma(color).set('hsl.l', lightness).hex();
+                hexColor = paletteColor.toUpperCase();
+                card = createColorCard(`${i * 100}`, hexColor, paletteColor, selectedColor);
+                palette.appendChild(card);
+            }
 
-    document.getElementById('colorCards').appendChild(paletteContainer);
-}
+            const paletteTitle = document.createElement('h4');
+            paletteTitle.textContent = colorName;
+            paletteContainer.appendChild(paletteTitle);
+            paletteContainer.appendChild(palette);
+        });
 
-  
-  
-function createColorCard(tokenName, hexColor, paletteColor, selectedColor) {
-    const card = document.createElement('div');
-    card.classList.add('colorCard', 'gradientCard');
-    card.style.backgroundColor = paletteColor;
-    card.style.color = chroma(paletteColor).luminance() > 0.5 ? '#333333' : '#ffffff';
-    card.style.width = '80px';
-    card.style.height = '80px'; 
-    card.style.borderRadius = '8px'; 
-    card.style.display = 'flex';
-    card.style.flexDirection = 'column';
-    card.style.justifyContent = 'center';
-    card.style.alignItems = 'center';
-    card.style.fontFamily = 'Arial, sans-serif';
-    card.style.fontSize = '14px';
-
-    // Highlight the matching color
-    if (chroma.valid(selectedColor) && chroma(paletteColor).hex() === chroma(selectedColor).hex()) {
-        card.style.border = '3px solid #000000';
+        const colorCardsContainer = document.getElementById('colorCards');
+        colorCardsContainer.appendChild(paletteContainer);
     }
 
-    card.innerHTML = `
-        <div style="font-size: 14px; font-weight: bold;">${tokenName}</div>
-        <div style="font-size: 14px; margin-top: 4px;">${hexColor}</div>
-    `;
+    function createColorCard(tokenName, hexColor, paletteColor, selectedColor) {
+        const card = document.createElement('div');
+        card.classList.add('colorCard', 'gradientCard');
+        card.style.backgroundColor = paletteColor;
+        card.style.color = chroma(paletteColor).luminance() > 0.5 ? '#333333' : '#ffffff';
+        card.style.width = '80px';
+        card.style.height = '80px'; 
+        card.style.borderRadius = '8px'; 
+        card.style.display = 'flex';
+        card.style.flexDirection = 'column';
+        card.style.justifyContent = 'center';
+        card.style.alignItems = 'center';
+        card.style.fontFamily = 'Arial, sans-serif';
+        card.style.fontSize = '14px';
 
-    return card;
-}
-  
-function updateHarmonyColors(baseColor) {
-    const harmonyType = document.getElementById('harmonyType').value;
-    const colors = getHarmonyColors(baseColor, harmonyType);
-    displayColors(colors);
-    updateColorIndicators(colors);
-    displayColorCards(colors, baseColor);
-}
+        // Highlight the matching color
+        if (chroma.valid(selectedColor) && chroma(paletteColor).hex() === chroma(selectedColor).hex()) {
+            card.style.border = '3px solid #000000';
+        }
+
+        card.innerHTML = `
+            <div style="font-size: 14px; font-weight: bold;">${tokenName}</div>
+            <div style="font-size: 14px; margin-top: 4px;">${hexColor}</div>
+        `;
+
+        return card;
+    }
 
     function displayColorCards(colors) {
         const colorCardsContainer = document.getElementById('colorCards');
@@ -177,7 +170,6 @@ function updateHarmonyColors(baseColor) {
             cardDiv.style.backgroundColor = color;
             cardDiv.style.color = textColor;
             cardDiv.innerHTML = `
-                
                 <p>${colorName}</p>
                 <p>RGB: ${r} ${g} ${b}</p>
                 <p>HEX: ${hexColor}</p>
@@ -187,6 +179,11 @@ function updateHarmonyColors(baseColor) {
         });
 
         generateColorPalettes(colors);
+        updateDisplayedPalettes(colors); // Store the currently displayed palettes
+    }
+
+    function updateDisplayedPalettes(baseColors) {
+        currentPalettes = generatePaletteJSON(baseColors); // Store the currently displayed palettes
     }
 
     colorWheel.on(['color:init', 'color:change'], function(color) {
@@ -206,138 +203,123 @@ function updateHarmonyColors(baseColor) {
     });
 
     updateHarmonyColors(colorWheel.color.hexString);
+
+    // Export functions
+    document.getElementById('exportSvgButton').addEventListener('click', exportPalettesAsSVG);
+    document.getElementById('exportJsonButton').addEventListener('click', exportPalettesAsJSON);
+
+    function generatePaletteJSON(baseColors) {
+        const palettes = {};
+
+        baseColors.forEach(color => {
+            let colorName = ntc.name(color)[1];
+            colorName = colorName.replace(/-color.*$/i, '').trim().toLowerCase().replace(/\s+/g, '-'); // Format color name for JSON key
+
+            const palette = {};
+            const shades = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "950"];
+
+            shades.forEach((shade, i) => {
+                const lightness = 1 - (i * 0.1);
+                const paletteColor = chroma(color).set('hsl.l', i === 0 ? 0.95 : lightness).hex();
+                palette[shade] = paletteColor.toLowerCase();
+            });
+
+            palettes[colorName] = palette;
+        });
+
+        return palettes;
+    }
+
+    function exportPalettesAsJSON() {
+        if (!currentPalettes || Object.keys(currentPalettes).length === 0) {
+            alert("No palettes to export.");
+            return;
+        }
+
+        const jsonBlob = new Blob([JSON.stringify(currentPalettes, null, 2)], { type: "application/json" });
+        const url = URL.createObjectURL(jsonBlob);
+
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "color_palettes.json";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }
+
+    function createSVGPaletteFromCurrent() {
+        if (!currentPalettes || Object.keys(currentPalettes).length === 0) {
+            alert("No palettes to export.");
+            return null;
+        }
+
+        const svgNS = "http://www.w3.org/2000/svg"; 
+        const svg = document.createElementNS(svgNS, "svg");
+        const totalHeight = Object.keys(currentPalettes).length * 120 + 20; // Calculate height based on number of palettes
+        svg.setAttribute("width", "810");
+        svg.setAttribute("height", `${totalHeight}`);
+
+        Object.keys(currentPalettes).forEach((colorName, index) => {
+            const palette = currentPalettes[colorName];
+
+            // Create a group element for each color's palette
+            const group = document.createElementNS(svgNS, "g");
+            group.setAttribute("transform", `translate(0, ${index * 120 + 20})`);
+
+            // Add the color name as a text element
+            const text = document.createElementNS(svgNS, "text");
+            text.setAttribute("x", "10");
+            text.setAttribute("y", "30");
+            text.setAttribute("font-size", "20");
+            text.setAttribute("font-family", "Arial");
+            text.textContent = colorName.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+            group.appendChild(text);
+
+            // Create rectangles for the color shades
+            Object.keys(palette).forEach((shade, i) => {
+                const rect = document.createElementNS(svgNS, "rect");
+                rect.setAttribute("x", `${80 * i + 10}`);
+                rect.setAttribute("y", "40");
+                rect.setAttribute("width", "70");
+                rect.setAttribute("height", "70");
+                rect.setAttribute("fill", palette[shade]);
+                group.appendChild(rect);
+
+                // Add the shade number as a text element on each rectangle
+                const shadeText = document.createElementNS(svgNS, "text");
+                shadeText.setAttribute("x", `${80 * i + 45}`);
+                shadeText.setAttribute("y", "90");
+                shadeText.setAttribute("font-size", "14");
+                shadeText.setAttribute("font-family", "Arial");
+                shadeText.setAttribute("text-anchor", "middle");
+                shadeText.setAttribute("fill", chroma(palette[shade]).luminance() > 0.5 ? '#333' : '#fff');
+                shadeText.textContent = shade;
+                group.appendChild(shadeText);
+            });
+
+            svg.appendChild(group);
+        });
+
+        return svg;
+    }
+
+    function exportPalettesAsSVG() {
+        const svg = createSVGPaletteFromCurrent();
+        if (!svg) return;
+
+        const serializer = new XMLSerializer();
+        const svgString = serializer.serializeToString(svg);
+
+        const svgBlob = new Blob([svgString], { type: "image/svg+xml" });
+        const url = URL.createObjectURL(svgBlob);
+
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "color_palettes.svg";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }
 });
-
-//export
-
-function createSVGPalette(baseColors) {
-    const svgNS = "http://www.w3.org/2000/svg"; 
-    const svg = document.createElementNS(svgNS, "svg");
-    const totalHeight = baseColors.length * 120 + 20; // Calculate height based on number of palettes
-    svg.setAttribute("width", "810");
-    svg.setAttribute("height", `${totalHeight}`);
-
-    baseColors.forEach((color, index) => {
-        let colorName = ntc.name(color)[1];
-        colorName = colorName.replace(/-color.*$/i, '').trim(); 
-
-        // Create a group element for each color's palette
-        const group = document.createElementNS(svgNS, "g");
-        group.setAttribute("transform", `translate(0, ${index * 120 + 20})`);
-
-        // Add the color name as a text element
-        const text = document.createElementNS(svgNS, "text");
-        text.setAttribute("x", "10");
-        text.setAttribute("y", "30");
-        text.setAttribute("font-size", "20");
-        text.setAttribute("font-family", "Arial");
-        text.textContent = colorName;
-        group.appendChild(text);
-
-        // Create rectangles for the color shades (from 50 to 900)
-        const shades = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"];
-        shades.forEach((shade, i) => {
-            const rect = document.createElementNS(svgNS, "rect");
-            const lightness = 1 - (i * 0.1);
-            const paletteColor = chroma(color).set('hsl.l', i === 0 ? 0.95 : lightness).hex();
-            
-            rect.setAttribute("x", `${80 * i + 10}`);
-            rect.setAttribute("y", "40");
-            rect.setAttribute("width", "70");
-            rect.setAttribute("height", "70");
-            rect.setAttribute("fill", paletteColor);
-            group.appendChild(rect);
-
-            // Add the shade number as a text element on each rectangle
-            const shadeText = document.createElementNS(svgNS, "text");
-            shadeText.setAttribute("x", `${80 * i + 45}`);
-            shadeText.setAttribute("y", "90");
-            shadeText.setAttribute("font-size", "14");
-            shadeText.setAttribute("font-family", "Arial");
-            shadeText.setAttribute("text-anchor", "middle");
-            shadeText.setAttribute("fill", chroma(paletteColor).luminance() > 0.5 ? '#333' : '#fff');
-            shadeText.textContent = shade;
-            group.appendChild(shadeText);
-        });
-
-        svg.appendChild(group);
-    });
-
-    return svg;
-}
-
-function exportPalettesAsSVG() {
-    const baseColors = getBaseColors(); // Get the base colors used to generate the palettes
-    const svg = createSVGPalette(baseColors);
-
-    const serializer = new XMLSerializer();
-    const svgBlob = new Blob([serializer.serializeToString(svg)], { type: "image/svg+xml" });
-    const url = URL.createObjectURL(svgBlob);
-
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "color_palettes.svg";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-}
-
-function getBaseColors() {
-    // Example of extracting base colors from your existing palettes
-    // Modify this based on your actual data structure.
-    // This function should return an array of base color hex codes.
-    return [
-        "#FF0000", // Example: Replace with actual base colors
-        "#00FFFF",
-        // ... other base colors
-    ];
-}
-
-// Add the export button to the DOM
-document.getElementById('exportSvgButton').addEventListener('click', exportPalettesAsSVG);
-
-
-// Tailwind hex
-
-function generatePaletteJSON(baseColors) {
-    const palettes = {};
-
-    baseColors.forEach(color => {
-        let colorName = ntc.name(color)[1];
-        colorName = colorName.replace(/-color.*$/i, '').trim().toLowerCase().replace(/\s+/g, '-'); // Format color name for JSON key
-
-        const palette = {};
-        const shades = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "950"];
-
-        shades.forEach((shade, i) => {
-            const lightness = 1 - (i * 0.1);
-            const paletteColor = chroma(color).set('hsl.l', i === 0 ? 0.95 : lightness).hex();
-            palette[shade] = paletteColor.toLowerCase();
-        });
-
-        palettes[colorName] = palette;
-    });
-
-    return palettes;
-}
-
-function exportPalettesAsJSON() {
-    const baseColors = getBaseColors(); // Get the base colors used to generate the palettes
-    const paletteJSON = generatePaletteJSON(baseColors);
-
-    const jsonBlob = new Blob([JSON.stringify(paletteJSON, null, 2)], { type: "application/json" });
-    const url = URL.createObjectURL(jsonBlob);
-
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "color_palettes.json";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-}
-
-
-document.getElementById('exportJsonButton').addEventListener('click', exportPalettesAsJSON);
-
