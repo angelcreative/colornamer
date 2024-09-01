@@ -29,7 +29,7 @@ sub, a {
 h1 {
     font-family: system-ui;
     text-align: center;
-    margin: 50px auto 30px;
+    margin: 0 0 40px;
     color: #000;
 }
 
@@ -199,43 +199,409 @@ button:hover {
     background-color:#fafafa; border:1px solid white
 }
 
-@media only screen and (max-width: 768px) {
-    body {
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        height: 100vh;
-        padding: 0;
-        margin: 0;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .colorCard {
-        padding: 10px;
-        border-radius: 10px;
-        text-align: center;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border: 1px solid rgba(0, 0, 0, .1);
-        justify-content: center;
-        height: 400px;
-        width: 80%;
-    }
-    
-    #colorCards {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        gap: 10px;
-    }
-  
-  .gradientCard {
-        width: 60px;
-        height: 80px;
-        font-size: 10px;
-    }
+/* iPhone Mockup Styles */
+.custom-iphone-x {
+  position: relative;
+  margin: 40px auto;
+  width: 360px;
+  height: 780px;
+  background-color: #fff; 
+  border-radius: 40px;
+  box-shadow: 0px 0px 0px 11px #ececec, 0px 0px 0px 13px #e9e9e9, 0px 0px 0px 20px #e4e4e4;
+  overflow: auto;
+  font-family: system-ui;
+  font-weight: normal;
 }
+
+.custom-iphone-x:after {
+  bottom: 7px;
+  width: 140px;
+  height: 4px;
+  background-color: #c0d8d0; /* Light summer green */
+  border-radius: 10px;
+}
+
+.custom-iphone-x:before {
+  top: 0px;
+  width: 56%;
+  height: 30px;
+  background-color: #b08290; /* Medium bouquet */
+  border-radius: 0px 0px 40px 40px;
+}
+
+.custom-iphone-x i,
+.custom-iphone-x b,
+.custom-iphone-x s {
+  position: absolute;
+  display: block;
+  color: transparent;
+}
+
+.custom-iphone-x i {
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%, 6px);
+  height: 8px;
+  width: 15%;
+  background-color: #7d4f5d; /* Dark bouquet */
+  border-radius: 8px;
+  box-shadow: inset 0px -3px 3px 0px rgba(256, 256, 256, 0.2);
+}
+
+.custom-iphone-x b {
+  left: 10%;
+  top: 0px;
+  transform: translate(180px, 4px);
+  width: 12px;
+  height: 12px;
+  background-color: #7d4f5d; /* Dark bouquet */
+  border-radius: 12px;
+  box-shadow: inset 0px -3px 2px 0px rgba(256, 256, 256, 0.2);
+}
+
+.custom-iphone-x b:after {
+  content: '';
+  position: absolute;
+  background-color: #3f272f; /* Darker bouquet */
+  width: 6px;
+  height: 6px;
+  top: 3px;
+  left: 3px;
+  display: block;
+  border-radius: 4px;
+  box-shadow: inset 0px -2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.custom-iphone-x s {
+  top: 50px;
+  color: #1f1417; /* Very dark bouquet */
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  font-size: 70px;
+  font-weight: 100;
+  padding-top: 60px;
+}
+
+.custom-iphone-x span {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-iphone-x span + span {
+  left: auto;
+  right: 30px;
+}
+
+/* App Design Styles */
+:root {
+  /* Variables para el primer color */
+  --background-primary: var(--background-color-1);
+  --color-primary: var(--color-color-1);
+  --button-primary: var(--button-color-1);
+
+  /* Variables para el segundo color */
+  --background-secondary: var(--background-color-2);
+  --color-secondary: var(--color-color-2);
+  --button-secondary: var(--button-color-2);
+
+  /* Variables para el tercer color */
+  --background-tertiary: var(--background-color-3);
+  --color-tertiary: var(--color-color-3);
+  --button-tertiary: var(--button-color-3);
+
+  /* Variables para el cuarto color */
+  --background-quaternary: var(--background-color-4);
+  --color-quaternary: var(--color-color-4);
+  --button-quaternary: var(--button-color-4);
+}
+
+.custom-app {
+  font-family: system-ui, sans-serif;
+  padding: 20px;
+  background-color: #fff;
+  color: var(--color-primary); /* color-color-1 */
+  font-weight: normal;
+}
+
+.custom-card.custom-card-primary h2, .custom-card.custom-card-primary p {
+    color: var(--background-primary);
+}
+
+h1, h2, h3 {
+  font-weight: 500;
+}
+
+p, a, li {
+  font-weight: 400;
+}
+
+/* Header */
+.custom-header {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  flex-direction: row;
+  margin-top: 0px;
+  align-items: center;
+  gap: 16px;
+}
+
+.custom-user-info {
+  display: flex;
+  align-items: center;
+}
+
+.custom-app-name {
+  font-size: 1.5em;
+  color: var(--button-primary); /* button-color-1 */
+}
+
+.custom-user-avatar img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.custom-greeting h1 {
+  font-size: 2em;
+  color: var(--color-primary); /* color-color-1 */
+  margin: 0;
+}
+
+.custom-greeting p {
+  font-size: 1rem;
+  color: var(--color-secondary); /* color-color-2 */
+  margin: 0;
+}
+
+/* Main Content */
+.custom-main-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  grid-gap: 16px;
+}
+
+.custom-card {
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.custom-icon-wrapper {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff9e;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-greeting {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.custom-card h2,
+.custom-card p {
+  margin: 0;
+}
+
+.custom-card h2 {
+  font-size: 1.3rem;
+}
+
+.custom-card p {
+  font-size: 0.8rem;
+}
+
+.custom-card-primary {
+  color: var(--color-primary); /* color-color-1 */
+  grid-column: span 2;
+  height: 200px;
+  background: url("https://i.postimg.cc/fWqYJkQ4/2-4c7715ff-80cf-43d9-b96a-316efe35d572.png") center center;
+  background-size: cover;
+}
+
+.custom-card-secondary {
+  background-color: var(--background-secondary); /* background-color-2 */
+  color: var(--color-secondary); /* color-color-2 */
+  height: 150px;
+}
+
+.custom-card-tertiary {
+  background-color: var(--background-primary); /* background-color-3 */
+  color: var(--color-tertiary); /* color-color-3 */
+  height: 150px;
+}
+
+.custom-card-primary, .custom-card-secondary, .custom-card-tertiary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  text-align: left;
+}
+
+.custom-icon-wrapper img {
+  width: 24px;
+  height: auto;
+  opacity: 0.6;
+}
+
+/* Recent Search */
+.custom-recent-search {
+  margin: 40px auto;
+}
+
+.custom-recent-search h3 {
+  font-size: 1.5em;
+  color: var(--color-primary); /* color-color-1 */
+  margin-bottom: 10px;
+}
+
+.custom-recent-search ul {
+  list-style: none;
+  padding: 0;
+}
+
+.custom-recent-search li {
+  background-color: var(--background-secondary); /* background-color-2 */
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  color: var(--color-secondary); /* color-color-2 */
+}
+
+/* Subscription */
+.custom-subscription {
+  text-align: center;
+}
+
+.custom-subscription h2 {
+  font-size: 1.8em;
+  color: var(--color-primary); /* color-color-1 */
+  margin-bottom: 20px;
+}
+
+.custom-plan {
+  background-color: var(--background-primary); /* background-color-1 */
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  color: var(--color-secondary); /* color-color-2 */
+}
+
+.custom-plan h3 {
+  margin: 0 0 10px 0;
+}
+
+.custom-plan p {
+  margin: 0;
+}
+
+.custom-subscribe-btn {
+  background-color: var(--button-primary); /* button-color-1 */
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button.custom-subscribe-btn:hover {
+    background: var(--background-primary);
+    color: var(--color-primary);
+}
+
+/* Recent Search */
+.custom-recent-search {
+  margin-bottom: 20px;
+}
+
+.custom-recent-search-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.custom-recent-search h3 {
+  font-size: 1.5em;
+  color: var(--color-primary); /* color-color-1 */
+  margin: 0;
+}
+
+.custom-see-all {
+  font-size: 0.9em;
+  color: var(--button-secondary); /* button-color-2 */
+  text-decoration: none;
+}
+
+.custom-recent-search ul {
+  list-style: none;
+  padding: 0;
+}
+
+.custom-search-item {
+  background-color: var(--background-secondary); /* background-color-2 */
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-secondary); /* color-color-2 */
+}
+
+.custom-search-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  background-color: var(--background-primary); /* background-color-1 */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.custom-search-icon-wrapper img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+}
+
+.custom-search-item span {
+  flex-grow: 1;
+  font-size: 1em;
+  color: var(--color-secondary); /* color-color-2 */
+  background: none;
+  text-align: left;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.custom-more-options {
+  font-size: 1.2em;
+  color: var(--button-secondary); /* button-color-2 */
+}
+
+
+
