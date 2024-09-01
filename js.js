@@ -374,3 +374,4 @@ function applyDynamicStyles(colorPalette) {
     root.style.setProperty('--color-quaternary', 'var(--color-color-4)');
     root.style.setProperty('--button-quaternary', 'var(--button-color-4)');
 }
+
