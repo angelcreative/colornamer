@@ -300,6 +300,9 @@ button:hover {
 
 /* App Design Styles */
 :root {
+  
+
+  
   /* Variables para el primer color */
   --background-primary: var(--background-color-1);
   --color-primary: var(--color-color-1);
@@ -605,4 +608,270 @@ button.custom-subscribe-btn:hover {
 
 
 
+/* dashboard */
 
+.custom-dashboard {
+    font-family: system-ui, sans-serif;
+    padding: 20px;
+    background-color: #f7f7f7;
+    color: var(--color-primary);
+    border: 1px solid gainsboro;
+    border-top: 50px solid #d9d9d9;
+    border-radius: 12px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo-section {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+.dashboard-nav .nav-link {
+  margin-right: 20px;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.dashboard-actions .connect-wallet {
+  background-color: var(--button-primary);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.user-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.overview-section, .portfolio-details, .assets-overview {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.section-title {
+  font-size: 1.5em;
+  color: var(--color-secondary);
+  margin-bottom: 20px;
+}
+
+.overview-cards, .portfolio-cards, .assets-cards {
+  display: flex;
+  gap: 20px;
+}
+
+.overview-card, .portfolio-card, .assets-card {
+  background-color: var(--background-color-1-50);
+  color: var(--color-tertiary);
+  padding: 20px;
+  border-radius: 20px;
+  flex: 1;
+}
+
+.portfolio-card {
+    background-color: var(--background-primary);
+    color: var(--color-primary);
+}
+
+.portfolio-card .custom-icon-wrapper {
+  position:static;
+} 
+
+.assets-card {
+    background-color: var(--background-secondary);
+    color: var(--color-secondary);
+}
+
+.overview-card h3, .portfolio-card h3, .assets-card h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.overview-card p, .portfolio-card p, .assets-card p {
+  font-size: 1em;
+  margin: 5px 0;
+}
+
+.connect-wallet {
+  background-color: var(--button-primary);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.chart-container {
+  background-color: var(--background-quaternary);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.dashboard-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* chart */
+
+
+
+
+
+
+
+.main-container {
+	
+	
+	width: 440px;
+	
+}
+
+.overview-card .main-container {
+    color: var(--color-color-3);
+    
+    border-radius: 5px;
+    
+}
+
+.year-stats {
+	white-space: nowrap;
+	max-height: 170px;
+	overflow: hidden;
+}
+
+.year-stats:hover {
+	overflow-x: auto;
+}
+
+/* SCROLL BAR STYLE (ONLY WORKS IN CHROME) */
+/* Width */
+::-webkit-scrollbar {
+	height: 5px;
+	width: 100%;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: var(--background-primary);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--color-primary);
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--color-primary);
+}
+
+.month-group {
+	cursor: pointer;
+	max-width: 400px;
+	height: 110px;
+	margin: 10px;
+	display: inline-block;
+}
+
+.bar {
+    background-color: var(--background-color-3-100);
+    width: 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.month-group:hover .bar, .selected .bar {
+    background: var(--button-color-1);
+}
+
+.month-group:hover p, .selected p {
+    color: var(--button-color-1);
+}
+
+.h-25 {
+	height: 25%;
+}
+.h-50 {
+	height: 50%;
+}
+.h-75 {
+	height: 75%;
+}
+.h-100 {
+	height: 100%;
+}
+
+.stats-info {
+	margin-top: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	position: relative;
+}
+
+.graph-container {
+	position: relative;
+}
+
+.percent {
+	display: block;
+	width: 120px;
+	height: 120px;
+}
+
+.circle {
+	stroke: var(--button-color-2);
+	fill: none;
+	stroke-width: 3;
+}
+
+.circle:nth-child(2) {
+	stroke:var(--button-primary);
+}
+
+.circle:nth-child(3) {
+	stroke: var(--button-color-1);
+}
+
+.circle:nth-child(4) {
+	stroke:var(--button-primary);
+}
+
+.graph-container p {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 12px;
+	color: var(--color-color-3);
+	text-align: center;
+}
+
+.info p {
+	margin-bottom: 10px;
+}
+
+.info span {
+	color:var(--color-primary);
+}
