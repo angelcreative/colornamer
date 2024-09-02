@@ -1279,7 +1279,7 @@ button.custom-subscribe-btn:hover {
 /* Media Queries for Mobile Devices ================================== ☎︎ */
 
 /* General Mobile Adjustments */
-@media (max-width: 767px) {
+@media screen and (min-width: 320px)  {
     body {
         max-width: 100%;
         padding: 10px;
