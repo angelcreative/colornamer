@@ -1001,7 +1001,8 @@ button.custom-subscribe-btn:hover {
 
 /* dashboard */
 
-.custom-dashboard {
+.custom-dashboard,
+.custom-web {
     font-family: system-ui, sans-serif;
     padding: 20px;
     background-color: #f7f7f7;
@@ -1012,7 +1013,8 @@ button.custom-subscribe-btn:hover {
   position:relative;
 }
 
-.custom-dashboard:before {
+.custom-dashboard:before,
+.custom-web:before{
     content: "🔴 🟡 🟢";
     position: absolute;
     top: -32px;
@@ -1276,3 +1278,169 @@ button.custom-subscribe-btn:hover {
 }
 
 
+/* General Styles ====================================== WEB*/
+
+.custom-web {
+  padding:0;
+}
+
+.custom-web:before {
+  padding:0 20px;
+}
+
+
+.custom-web h1, .custom-web  h2 {
+    margin-bottom: 1rem;
+}
+
+
+
+.custom-web p {
+    margin-bottom: 1.5rem;
+}
+
+.custom-web a {    text-decoration: none;
+    color: var(--color-primary);
+}
+
+.custom-web section {
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+.custom-web .hero-section {
+   background-color: var(--background-primary);
+    color: var(--background-color-1-50);
+    padding: 6rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url(https://i.postimg.cc/mD8nhn9y/3-8d6a550d-326d-47ca-b8af-8d8a0081cf1b-2.png);
+    background-size: cover;
+    background-position: center center;
+    height: 340px;
+}
+
+.custom-web .hero-content {
+    max-width: 600px;
+}
+
+.custom-web  .hero-content h1 {
+  font-size:2rem;
+  color: var(--button-color-2);
+}
+
+.custom-web  .hero-content p {
+  font-size:1rem;
+  color: var(--button-color-2);
+}
+
+.custom-web .cta-button {
+    background-color: var(--button-primary);
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.custom-web .cta-button:hover {
+    background-color: var(--button-secondary);
+}
+
+/* Services Section */
+.custom-web .services-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: var(--background-secondary);
+    color: var(--color-secondary);
+}
+
+.custom-web .service {
+    background-color: #fff;
+    margin: 1rem;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(33% - 2rem);
+    max-width: calc(33% - 2rem);
+}
+.custom-web .service img {
+    width: -webkit-fill-available;
+    margin: 0 0 2rem 0;
+    border-radius: .5rem;
+}
+
+
+
+.custom-web .service h2 {
+  font-size:1.4rem;
+    color: var(--color-primary);
+}
+
+.custom-web .service-link {
+    display: inline-block;
+    margin-top: 1rem;
+    background-color: var(--button-secondary);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+/* About Us Section */
+.custom-web .about-section {
+    background-color: var(--background-primary);
+    color: var(--color-primary);
+}
+
+.custom-web .about-section h2 {
+font-size: 1.4rem;
+  color: var(--color-primary); }
+
+.custom-web  .about-section img {
+    border-radius: 900px;
+    height: 240px;
+    margin: 0 0 1rem 0;
+}
+
+/* Contact Section */
+.custom-web .contact-section {
+    background-color: var(--background-quaternary);
+    color: var(--color-quaternary);
+}
+
+.custom-web .contact-section form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.custom-web .contact-section input, .custom-web .contact-section textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.custom-web .contact-section button {
+    background-color: var(--button-primary);
+    color: #fff;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.custom-web .contact-section button:hover {
+    background-color: var(--button-secondary);
+}
+
+/* Footer */
+.custom-web  footer {
+    padding: 2rem;
+    background-color: var(--background-primary);
+    color: var(--color-primary);
+    text-align: center;
+}
