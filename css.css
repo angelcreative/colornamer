@@ -754,6 +754,19 @@ p, a, li {
   font-weight: 400;
 }
 
+.custom-dashboard, .custom-web, .styleTile {
+    font-family: system-ui, sans-serif;
+    padding: 20px;
+    background-color: #f7f7f7;
+    color: var(--color-primary);
+    border: 1px solid gainsboro;
+    border-top: 50px solid #d9d9d9;
+    border-radius: 12px;
+    position: relative;
+    max-width: 89%;
+    margin: 0 auto;
+}
+
 /* Header */
 .custom-header {
   display: flex;
