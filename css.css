@@ -1510,6 +1510,7 @@ font-size: 1.4rem;
     background-color: var(--background-primary);
     color: var(--color-primary);
     font-family: system-ui, sans-serif;
+	flex-direction: row;
 }
 
 .pricing-card {
@@ -1563,10 +1564,7 @@ font-size: 1.4rem;
     flex: 1;
 }
 
-.pricing-table {
-   
-    flex-direction: row;
-}
+
 
 .features {
     list-style: none;
