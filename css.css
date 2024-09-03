@@ -365,6 +365,14 @@ textarea {
     padding: 0.2em 0;
 }
 
+#paletteContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+    align-items: center;
+}
+
 
 /*end reset =================================== */
 
@@ -419,6 +427,20 @@ input#hexInput {
     width: 210px;
     margin: 0 auto;
 }
+
+
+#paletteContainer {
+	display: flex;
+    flex-direction: row;
+    gap: 0;
+    width: 80%;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+
+    
 
 .colorIndicator {
             position: absolute;
