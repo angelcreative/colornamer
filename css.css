@@ -376,12 +376,11 @@ body {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-content: center;
     justify-content: center;
     background:#f7f7f7;
-    padding: 0;
-    margin: 0 auto;
-  max-width:70rem
+    /* padding: 0; */
+    /* margin: 0; */
+    align-items: center;
 }
 sub, a {
     display: inline-block;
@@ -493,12 +492,12 @@ input#hexInput {
 .coloresWheel {
     display: flex;
     flex-direction: column;
-    width: auto;
+    width: 100%;
     flex-wrap: wrap;
     font-family: system-ui;
     justify-content: center;
     gap: 40px;
-    align-content: flex-start;
+    align-items: center;
 }
 
 
@@ -1140,10 +1139,6 @@ button.custom-subscribe-btn:hover {
 
 
 .main-container {
-	
-	
-	width: 440px;
-	
 }
 
 .overview-card .main-container {
@@ -1748,8 +1743,11 @@ font-size: 1.4rem;
     display: flex;
     row-gap: 10px;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
 }
 
   
