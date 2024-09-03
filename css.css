@@ -522,6 +522,21 @@ input#hexInput {
     align-items: center;
 }
 
+/* Additional CSS for copy buttons */
+.colorCard button {
+    background-color: var(--button-primary);
+    color: var(--color-primary);
+    border: none;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.colorCard button:hover {
+    background-color: var(--button-secondary);
+    color: var(--color-secondary);
+}
 
 
 #colorCards {
