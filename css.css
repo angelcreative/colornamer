@@ -493,7 +493,7 @@ input#hexInput {
 .coloresWheel {
     display: flex;
     flex-direction: column;
-    width: 1180px;
+    width: auto;
     flex-wrap: wrap;
     font-family: system-ui;
     justify-content: center;
@@ -587,7 +587,7 @@ button {
 }
 
 button:hover {
-    background-color:#fafafa; border:1px solid white
+    background-color:#fafafa; 
 }
 
 /* iPhone Mockup Styles */
@@ -689,30 +689,28 @@ button:hover {
   right: 30px;
 }
 
-/* App Design Styles */
+/* Root Variables */
 :root {
-  
+    /* Variables para el primer color */
+    --background-primary: var(--background-color-1);
+    --color-primary: var(--color-color-1);
+    --button-primary: var(--button-color-1);
 
-  
-  /* Variables para el primer color */
-  --background-primary: var(--background-color-1);
-  --color-primary: var(--color-color-1);
-  --button-primary: var(--button-color-1);
+    /* Variables para el segundo color */
+    --background-secondary: var(--background-color-2);
+    --color-secondary: var(--color-color-2);
+    --button-secondary: var(--button-color-2);
 
-  /* Variables para el segundo color */
-  --background-secondary: var(--background-color-2);
-  --color-secondary: var(--color-color-2);
-  --button-secondary: var(--button-color-2);
+    /* Variables para el tercer color */
+    --background-tertiary: var(--background-color-3);
+    --color-tertiary: var(--color-color-3);
+    --button-tertiary: var(--button-color-3);
 
-  /* Variables para el tercer color */
-  --background-tertiary: var(--background-color-3);
-  --color-tertiary: var(--color-color-3);
-  --button-tertiary: var(--button-color-3);
-
-  /* Variables para el cuarto color */
-  --background-quaternary: var(--background-color-4);
-  --color-quaternary: var(--color-color-4);
-  --button-quaternary: var(--button-color-4);
+    /* Variables para el cuarto color */
+    --background-quaternary: var(--background-color-4);
+    --color-quaternary: var(--color-color-4);
+    --button-quaternary: var(--button-color-4);
+    
 }
 
 .custom-app {
@@ -1443,4 +1441,557 @@ font-size: 1.4rem;
     background-color: var(--background-primary);
     color: var(--color-primary);
     text-align: center;
+}
+
+/*================================================ TILE */
+
+
+/* StyleTile Container */
+.styleTile {
+    padding: 40px;
+    background-color:none;
+    font-family: system-ui, sans-serif;
+    color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Typography Section */
+.typography-section h1, 
+.typography-section h2, 
+.typography-section h3, 
+.typography-section p {
+    margin-bottom: 20px;
+    color: var(--color-primary);
+}
+
+.typography-section h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.typography-section h2 {
+    font-size: 30px;
+    font-weight: medium;
+}
+
+.typography-section h3 {
+    font-size: 24px;
+    font-weight: medium;
+}
+
+.typography-section p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Buttons Section */
+.buttons-section {
+    display: flex;
+    gap: 20px;
+}
+
+.buttons-section button {
+  box-shadow:none;
+}
+
+.primary-button {
+    background-color: var(--button-primary);
+    color: var(--background-color-1-50);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.primary-button:hover {
+    background-color: var(--button-primary);
+    opacity: 0.9;
+}
+
+.primary-button:disabled {
+    background-color: var(--background-secondary);
+    color: var(--color-secondary);
+    cursor: not-allowed;
+}
+
+.secondary-button {
+   background-color: var(--background-color-1-100);
+    color: var(--button-color-1);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.secondary-button:hover {
+    background-color: var(--button-primary);
+  color: var(--background-color-1-50);
+    opacity: 0.9;
+}
+
+.outlined-button {
+    background-color: transparent;
+    color: var(--button-primary);
+    padding: 12px 24px;
+    border: 2px solid var(--button-primary);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.outlined-button:hover {
+    background-color: var(--button-primary);
+    color: var(--background-color-1-50);
+}
+
+
+.outlined-button .material-symbols-rounded {
+    color: var(--button-color-1);
+}
+
+
+.outlined-button .material-symbols-rounded:hover {
+    color: var(--background-color-1-50);
+}
+
+.outlined-button:disabled {
+    border-color: var(--background-secondary);
+    color: var(--background-secondary);
+    cursor: not-allowed;
+}
+
+/* Input Fields */
+.inputs-section {
+    display: flex;
+    gap: 20px;
+}
+
+.input-field {
+   ackground-color: var(--background-primary);
+    color: var(--color-color-2);
+    border: 1px solid var(--background-color-2-100);
+    padding: 10px;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input-field::placeholder {
+    color: var(--color-secondary);
+    opacity: 0.7;
+}
+
+/* Tags and Icons */
+.tags-section {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.tag {
+    background-color: var(--background-color-2-100);
+    color: var(--color-color-2);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.icon-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.material-symbols-rounded {
+    font-size: 24px;
+    color: var(--color-primary);
+}
+
+/* Color Swatches */
+.color-swatches {
+    display: flex;
+    gap: 20px;
+}
+
+.color-swatch {
+    text-align: center;
+}
+
+.color-box {
+    width: 100px;
+    height: 100px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.background-color {
+    background-color: var(--background-primary);
+}
+
+.template-background {
+    background-color: var(--background-secondary);
+}
+
+.dark-background {
+    background-color: var(--color-tertiary);
+}
+
+.typography-color {
+    background-color: var(--color-primary);
+}
+
+.text-link-color {
+    background-color: var(--button-primary);
+}
+
+/* Image Upload */
+.image-upload {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.upload-label {
+    background-color: var(--background-secondary);
+    color: var(--color-secondary);
+    padding: 12px;
+    border: 2px dashed var(--color-secondary);
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.file-input {
+    display: none;
+}
+
+/* Avatar Icons */
+.avatar-section {
+    display: flex;
+    gap: 20px;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.avatar img {
+    width: 100%;
+    height: auto;
+}
+
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+    overflow: hidden;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--background-color-1-100);
+    cursor: pointer;
+}
+
+.dashboard-nav {
+  display:block;
+ 
+}
+
+.dasboard-burger {
+  display:none
+}
+
+
+/*========================================RESPONSIVE*/
+
+/* Existing CSS */
+
+/* Media Queries for Responsive Design */
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+  
+  
+  .dashboard-nav {
+  display:none;
+ 
+}
+  
+
+.dashboard-burger {
+  display:block; cursor:pointer
+}
+  
+  .logo-sectionicon-tag {
+    display: flex;
+    gap: 10px;
+}
+  
+  .selectColores, .color-palette {
+    display: flex;
+    row-gap: 10px;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+}
+
+  
+  .custom-dashboard, .custom-iphone-x, .custom-web, .styleTile {
+   width: calc(100% - 40px);
+        margin: 0 auto;
+        padding: 0;
+}
+  
+    .custom-iphone-x {
+      
+        height: auto;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: none;
+    }
+
+    .custom-header, .custom-main-content, .custom-recent-search, .custom-subscription {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .custom-header {
+        gap: 8px;
+    }
+
+    .custom-app-name {
+        font-size: 1.2em;
+    }
+
+    .custom-user-avatar img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .custom-greeting h1 {
+        font-size: 1.5em;
+    }
+
+    .custom-greeting p {
+        font-size: 0.9rem;
+    }
+
+    .custom-main-content {
+        grid-template-columns: 1fr;
+        grid-gap: 10px;
+    }
+
+    .custom-card {
+        padding: 15px;
+        border-radius: 15px;
+        text-align: center;
+    }
+
+    .custom-card-primary, .custom-card-secondary, .custom-card-tertiary {
+        display: flex;
+        grid-column: span 1;
+        justify-content: flex-end;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .custom-icon-wrapper {
+        top: 10px;
+        left: 10px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .custom-card h2 {
+        font-size: 1.1rem;
+    }
+
+    .custom-card p {
+        font-size: 0.7rem;
+    }
+
+    .custom-web .hero-section {
+        height: auto;
+        padding: 4rem 1rem;
+    }
+
+    .custom-web .services-section {
+        flex-direction: row;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .custom-web .service {
+        margin:  0;
+        
+    }
+
+    .custom-web .about-section, .custom-web .contact-section {
+        padding: 2rem 1rem;
+    }
+
+    .custom-web .about-section h2, .custom-web .contact-section h2 {
+        font-size: 1.2rem;
+    }
+
+    .custom-web .cta-button {
+        padding: 0.8rem 1.5rem;
+    }
+
+    .custom-web .service h2 {
+        font-size: 1.2rem;
+    }
+
+    .dashboard-main {
+        flex-direction: column;
+    }
+
+    .overview-cards, .portfolio-cards, .assets-cards {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .overview-card, .portfolio-card, .assets-card {
+        padding: 15px;
+        border-radius: 10px;
+      display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+  
+
+    .typography-section h1 {
+        font-size: 28px;
+    }
+
+    .typography-section h2 {
+        font-size: 24px;
+    }
+
+    .typography-section h3 {
+        font-size: 20px;
+    }
+
+    .typography-section p {
+        font-size: 14px;
+    }
+
+    .buttons-section {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .input-field {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .tags-section {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .avatar-section {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .avatar {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+
+
+    .flex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #colorWheelContainer {
+       
+        margin: 0 auto;
+    }
+
+    #harmonyType {
+        
+        margin-top: 10px;
+    }
+
+    #colorCards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+   .custom-web .contact-section input, .custom-web .contact-section textarea {
+    width: -webkit-fill-available;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+    .custom-app {
+        padding: 10px;
+    }
+
+
+
+.buttons {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.buttons button {
+    margin: 0 auto;
+}
+
+
+.styleTile .buttons-section, .styleTile .inputs-section, .styleTile .tags-section, .styleTile .image-upload, .styleTile .avatar-section {
+    padding: 0 40px 40px;
+}
+
+.custom-web .about-section img {
+    border-radius: 900px;
+    height: 170px;
+    margin: 0 0 1rem 0;
+}
+
+
+.custom-search-icon-wrapper  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+
+
+    /* Other necessary adjustments can be added here */
 }
