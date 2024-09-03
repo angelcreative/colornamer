@@ -82,10 +82,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function generateColorPalettes(baseColors, selectedColor) {
         const paletteContainer = document.createElement('div');
         paletteContainer.id = 'paletteContainer';
-        paletteContainer.style.display = 'flex';
+       /* paletteContainer.style.display = 'flex';
         paletteContainer.style.flexDirection = 'column';
         paletteContainer.style.gap = '20px';
-        paletteContainer.style.width = '100%';
+        paletteContainer.style.width = '100%';*/
 
         baseColors.forEach(color => {
             let colorName = ntc.name(color)[1];
