@@ -79,6 +79,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    
+    
+    //COPY 
+// Function to copy the color to clipboard
+function copyToClipboard(colorHex) {
+    const el = document.createElement('textarea');
+    el.value = colorHex;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    alert('Color ' + colorHex + ' copied to clipboard!');
+}
+    
     function generateColorPalettes(baseColors, selectedColor) {
         const paletteContainer = document.createElement('div');
         paletteContainer.id = 'paletteContainer';
@@ -122,32 +136,48 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function createColorCard(tokenName, hexColor, paletteColor, selectedColor) {
-        const card = document.createElement('div');
-        card.classList.add('colorCard', 'gradientCard');
-        card.style.backgroundColor = paletteColor;
-        card.style.color = chroma(paletteColor).luminance() > 0.5 ? '#333333' : '#ffffff';
-        card.style.width = '80px';
-        card.style.height = '80px'; 
-        card.style.borderRadius = '8px'; 
-        card.style.display = 'flex';
-        card.style.flexDirection = 'column';
-        card.style.justifyContent = 'center';
-        card.style.alignItems = 'center';
-        card.style.fontFamily = 'Arial, sans-serif';
-        card.style.fontSize = '14px';
+    const card = document.createElement('div');
+    card.classList.add('colorCard', 'gradientCard');
+    card.style.backgroundColor = paletteColor;
+    card.style.color = chroma(paletteColor).luminance() > 0.5 ? '#333333' : '#ffffff';
+    card.style.width = '80px';
+    card.style.height = '80px'; 
+    card.style.borderRadius = '8px'; 
+    card.style.display = 'flex';
+    card.style.flexDirection = 'column';
+    card.style.justifyContent = 'center';
+    card.style.alignItems = 'center';
+    card.style.fontFamily = 'Arial, sans-serif';
+    card.style.fontSize = '14px';
 
-        // Highlight the matching color
-        if (chroma.valid(selectedColor) && chroma(paletteColor).hex() === chroma(selectedColor).hex()) {
-            card.style.border = '3px solid #000000';
-        }
-
-        card.innerHTML = `
-            <div style="font-size: 14px; font-weight: bold;">${tokenName}</div>
-            <div style="font-size: 14px; margin-top: 4px;">${hexColor}</div>
-        `;
-
-        return card;
+    // Highlight the matching color
+    if (chroma.valid(selectedColor) && chroma(paletteColor).hex() === chroma(selectedColor).hex()) {
+        card.style.border = '3px solid #000000';
     }
+
+    // Add a button to copy the hex color
+    const copyButton = document.createElement('button');
+    copyButton.textContent = 'Copy';
+    copyButton.style.marginTop = '8px';
+    copyButton.style.fontSize = '10px';
+    copyButton.style.padding = '4px';
+    copyButton.style.borderRadius = '4px';
+    copyButton.style.cursor = 'pointer';
+    copyButton.style.background = '#000';
+    copyButton.style.color = '#fff';
+    copyButton.addEventListener('click', function() {
+        copyToClipboard(hexColor);
+    });
+
+    card.innerHTML = `
+        <div style="font-size: 14px; font-weight: bold;">${tokenName}</div>
+        <div style="font-size: 14px; margin-top: 4px;">${hexColor}</div>
+    `;
+    card.appendChild(copyButton);
+
+    return card;
+}
+
   
       function updateDisplayedPalettes(baseColors) {
         const colorPalette = generatePaletteJSON(baseColors); // Genera el colorPalette
@@ -376,4 +406,3 @@ function applyDynamicStyles(colorPalette) {
     root.style.setProperty('--color-quaternary', 'var(--color-color-4)');
     root.style.setProperty('--button-quaternary', 'var(--button-color-4)');
 }
-
