@@ -1563,6 +1563,11 @@ font-size: 1.4rem;
     flex: 1;
 }
 
+.pricing-table {
+   
+    flex-direction: row;
+}
+
 .features {
     list-style: none;
     padding: 0;
