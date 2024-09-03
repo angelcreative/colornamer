@@ -531,11 +531,14 @@ input#hexInput {
     padding: 5px;
     font-size: 10px;
     cursor: pointer;
+	opacity: .2;
+    transition: opacity cubic-bezier(0.6, -0.28, 0.74, 0.05) 300ms;
 }
 
 .colorCard button:hover {
     background-color: var(--button-secondary);
     color: var(--color-secondary);
+	opacity: .8;
 }
 
 
