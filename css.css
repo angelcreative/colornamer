@@ -1885,7 +1885,7 @@ font-size: 1.4rem;
 
     .custom-web .service {
         margin:  0;
-        width:100%
+        max-width:100%
     }
 
     .custom-web .about-section, .custom-web .contact-section {
