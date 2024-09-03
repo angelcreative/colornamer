@@ -1378,7 +1378,7 @@ button.custom-subscribe-btn:hover {
 
 /* Services Section */
 .custom-web .services-section {
-    display: flex;
+  display: flex;
     flex-wrap: wrap;
     justify-content: center;
     background-color: var(--background-secondary);
@@ -1388,16 +1388,25 @@ button.custom-subscribe-btn:hover {
 .custom-web .service {
     background-color: #fff;
     margin: 1rem;
-    padding: 2rem;
+    padding: 0;
     border-radius: 8px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    flex: 1 1 calc(33% - 2rem);
-    max-width: calc(33% - 2rem);
+    max-width: 20%;
+    overflow: hidden;
 }
 .custom-web .service img {
     width: -webkit-fill-available;
-    margin: 0 0 2rem 0;
-    border-radius: .5rem;
+
+}
+
+.image {
+    margin-bottom: 24px;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 
