@@ -363,6 +363,25 @@ function copyToClipboard(colorHex) {
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
     }
+
+
+let debounceTimer;
+
+hexInput.addEventListener('input', function () {
+    const hexValue = hexInput.value.trim();
+
+    // Clear previous debounce timer if still running
+    clearTimeout(debounceTimer);
+
+    // Set a debounce timer to update the color after a delay
+    debounceTimer = setTimeout(() => {
+        if (chroma.valid(hexValue)) {
+            colorWheel.color.hexString = hexValue; // Update the color wheel
+        }
+    }, 300); // Delay in milliseconds (300ms)
+});
+
+    
 });
 
 
@@ -407,19 +426,5 @@ function applyDynamicStyles(colorPalette) {
     root.style.setProperty('--button-quaternary', 'var(--button-color-4)');
 }
 
-let debounceTimer;
 
-hexInput.addEventListener('input', function () {
-    const hexValue = hexInput.value.trim();
-
-    // Clear previous debounce timer if still running
-    clearTimeout(debounceTimer);
-
-    // Set a debounce timer to update the color after a delay
-    debounceTimer = setTimeout(() => {
-        if (chroma.valid(hexValue)) {
-            colorWheel.color.hexString = hexValue; // Update the color wheel
-        }
-    }, 300); // Delay in milliseconds (300ms)
-});
 
