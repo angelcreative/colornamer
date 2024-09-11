@@ -415,13 +415,32 @@ h1 {
   flex-direction: column;
   gap:24px
 }
-
+.hexInputcontainer {
+    border-radius: 900px;
+    height: 60px;
+    width: 60px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
 
 
 input#hexInput {
-    width: 60px;
-    height: 60px;
-    border-radius: 900px;
+    width: 200px;
+    padding: 0;
+    margin: 0 auto;
+    border: none;
+    border-radius: 0;
+    inline-size: 200px;
+    block-size: 80px;
+    background: none;
+    position: absolute;
+    top: -10px;
+    left: -10px;
 }
 #harmonyType, select, input {
     padding: 12px;
