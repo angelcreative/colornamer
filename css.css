@@ -1624,6 +1624,13 @@ font-size: 1.4rem;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
+.flex {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
 
 /*================================================ TILE */
 
@@ -1900,12 +1907,7 @@ font-size: 1.4rem;
 }
 
 
-.flex {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    flex-direction: row;
-}
+
 
 /*======================================___=========================================RESPONSIVE 🔴*/
 
@@ -1920,7 +1922,16 @@ font-size: 1.4rem;
    
     flex-direction: column;
 }
-  
+
+	
+
+.flex {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+	
   .dashboard-nav {
   display:none;
  
@@ -2120,13 +2131,6 @@ font-size: 1.4rem;
 
 
 
-
-.flex {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    flex-direction: column;
-}
 
     #colorWheelContainer {
        
