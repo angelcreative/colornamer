@@ -416,8 +416,12 @@ h1 {
   gap:24px
 }
 
+
+
 input#hexInput {
-    width: 186px;
+    width: 60px;
+    height: 60px;
+    border-radius: 900px;
 }
 #harmonyType, select, input {
     padding: 12px;
