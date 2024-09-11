@@ -410,11 +410,7 @@ h1 {
     color: #000;
 }
 
-.flex {
-  display:flex;
-  flex-direction: column;
-  gap:24px
-}
+
 .hexInputcontainer {
     border-radius: 900px;
     height: 60px;
@@ -1904,6 +1900,13 @@ font-size: 1.4rem;
 }
 
 
+.flex {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
 /*======================================___=========================================RESPONSIVE 🔴*/
 
 /* Existing CSS */
@@ -2118,10 +2121,12 @@ font-size: 1.4rem;
 
 
 
-    .flex {
-        flex-direction: column;
-        align-items: center;
-    }
+.flex {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
 
     #colorWheelContainer {
        
