@@ -1629,6 +1629,7 @@ font-size: 1.4rem;
     gap: 20px;
     flex-wrap: wrap;
     flex-direction: row;
+    align-items: center;
 }
 
 
