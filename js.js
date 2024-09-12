@@ -110,7 +110,7 @@ toggleSwitch.addEventListener('change', function() {
     
     
     //COPY 
-// Function to copy the color to clipboard
+/* Function to copy the color to clipboard
 function copyToClipboard(colorHex) {
     const el = document.createElement('textarea');
     el.value = colorHex;
@@ -119,6 +119,32 @@ function copyToClipboard(colorHex) {
     document.execCommand('copy');
     document.body.removeChild(el);
     alert('Color ' + colorHex + ' copied to clipboard!');
+}*/
+// Function to show the custom alert
+function showAlert(message) {
+  const alertBox = document.getElementById('custom-alert');
+  const alertMessage = document.getElementById('alert-message');
+
+  // Set the message in the alert box
+  alertMessage.textContent = message;
+  alertBox.style.display = 'block';  // Show the alert box
+
+  // Close the alert when the user clicks the button
+  const alertOkButton = document.getElementById('alert-ok');
+  alertOkButton.onclick = function() {
+    alertBox.style.display = 'none';  // Hide the alert box
+  };
+}
+
+  // Function to copy the color to clipboard
+function copyToClipboard(colorHex) {
+  const el = document.createElement('textarea');
+  el.value = colorHex;
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+  showAlert('Color ' + colorHex + ' copied to clipboard!');
 }
     
     function generateColorPalettes(baseColors, selectedColor) {
