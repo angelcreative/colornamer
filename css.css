@@ -380,6 +380,33 @@ html {
     background: #f7f7f7;
 }
 
+.custom-alert {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: none;
+  z-index: 9999;
+}
+
+.custom-alert button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #6200ea;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.custom-alert button:hover {
+  background-color: #3700b3;
+}
 
 
 :root {
