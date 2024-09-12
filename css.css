@@ -409,11 +409,9 @@ body {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    background:#f7f7f7;
-    /* padding: 0; */
-    /* margin: 0; */
+   
     align-items: center;
-	background:linear-gradient(133deg, transparent, var(--background-secondary), var(--background-primary))
+background:linear-gradient(133deg, transparent, var(--background-secondary), var(--background-primary))
 }
 
 
