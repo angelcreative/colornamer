@@ -129,7 +129,7 @@ function showAlert(message) {
 alertMessage.textContent = message;
 alertBox.style.display = 'flex';  // Show the alert box
 alertBox.style.flexDirection = 'column';  // Set flex direction to column
-alertBox.style.alignItems = 'stretch';  // Align items to stretch
+alertBox.style.alignItems = 'center';  // Align items to stretch
 alertBox.style.gap = '24px';  // Set gap between elements
 
 
