@@ -1295,9 +1295,15 @@ background: linear-gradient(180deg, transparent, var(--background-secondary), va
     color: var(--color-primary);
 }
 
-.portfolio-card .custom-icon-wrapper {
-  position:static;
-} 
+.portfolio-card {
+    background-color: var(--background-primary);
+    color: var(--color-primary);
+    padding: 24px 12px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;    width: -webkit-fill-available;
+}
 
 .assets-card {
     background-color: var(--background-secondary);
