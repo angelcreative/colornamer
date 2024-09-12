@@ -1,4 +1,30 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+const toggleSwitch = document.getElementById('theme-toggle');
+
+// Verificar el tema actual almacenado en localStorage
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme) {
+  document.documentElement.setAttribute('data-theme', currentTheme);
+
+  // Si el tema es oscuro, marcar el switch como activo
+  if (currentTheme === 'dark') {
+    toggleSwitch.checked = true;
+  }
+}
+
+toggleSwitch.addEventListener('change', function() {
+  if (this.checked) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');  // Guardar en localStorage
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('theme', 'light');  // Guardar en localStorage
+  }
+});
+
+    
+    
     var colorWheelContainer = document.getElementById('colorWheelContainer');
     var hexInput = document.getElementById('hexInput');
     var currentPalettes = [];  // Store currently displayed palettes
