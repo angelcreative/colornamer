@@ -416,6 +416,10 @@ body {
   color: var(--text-color);
 }
 
+[data-theme="dark"] body {
+  background: var(--background-dark);
+}
+
 
 
 /* Estilo del switch */
