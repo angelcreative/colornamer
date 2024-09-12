@@ -384,8 +384,8 @@ html {
 
 :root {
   /* Variables para tema claro */
-  --background-primary: #f7f7f7;
-  --background-secondary: #f0f0f0;
+  --background-light: #f7f7f7;
+ 
   --text-color: black;
   --border-color: #e0e0e0;
   --border-top-color: #ffffff;
@@ -394,8 +394,8 @@ html {
 
 [data-theme="dark"] {
   /* Variables para tema oscuro */
-  --background-primary: #36393b;
-  --background-secondary:#36393b;
+  --background-dark: #36393b;
+ 
   --text-color: #F2F2F3;
   --border-color: #494950;
   --border-top-color: #333135;
@@ -412,7 +412,7 @@ body {
   padding: 0;
   margin: 0;
   align-items: center;
-  background: linear-gradient(133deg, transparent, var(--background-secondary), var(--background-primary));
+  background: var(--background-light);
   color: var(--text-color);
 }
 
