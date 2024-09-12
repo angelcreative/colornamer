@@ -424,10 +424,14 @@ body {
 
 /* Estilo del switch */
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
+    position: fixed;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    bottom: 2%;
+    left: 1%;
+    z-index: 1;
+    zoom: .5;
 }
 
 .switch input {
