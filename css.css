@@ -384,7 +384,7 @@ html {
 
 :root {
   /* Variables para tema claro */
-  --background-primary: transparent;
+  --background-primary: #f7f7f7;
   --background-secondary: #f0f0f0;
   --text-color: black;
   --border-color: #e0e0e0;
@@ -409,9 +409,9 @@ body {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-   
+    background: var(--background-primary);
     align-items: center;
-background:linear-gradient(133deg, transparent, var(--background-secondary), var(--background-primary))
+/*background:linear-gradient(133deg, transparent, var(--background-secondary), var(--background-primary))*/
 }
 
 
@@ -877,7 +877,7 @@ p, a, li {
 .custom-dashboard, .custom-web, .styleTile {
     font-family: system-ui, sans-serif;
     padding: 20px;
-    background-color: #f7f7f7;
+    background:var(--background-primary);
     color: var(--color-primary);
     border: 1px solid gainsboro;
     border-top: 50px solid #d9d9d9;
