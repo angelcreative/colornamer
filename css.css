@@ -392,12 +392,13 @@ html {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: none;
   z-index: 9999;
+  font-family: system-ui;
 }
 
 .custom-alert button {
   margin-top: 10px;
   padding: 8px 16px;
-  background-color: #6200ea;
+  background-color: var(--button-primary);
   color: white;
   border: none;
   border-radius: 4px;
@@ -405,7 +406,7 @@ html {
 }
 
 .custom-alert button:hover {
-  background-color: #3700b3;
+  background-color: var(--button-secondary);
 }
 
 
@@ -512,7 +513,7 @@ sub, a {
     border-radius: 12px !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,h2 {
   color: var(--text-color);
 }
 
@@ -1202,6 +1203,10 @@ button.custom-subscribe-btn:hover {
     border-top: 50px solid #d9d9d9;
     border-radius: 12px;
   position:relative;
+}
+
+.cutom-web h2 {
+	color:var(--color-primary);
 }
 
 .custom-dashboard:before,
