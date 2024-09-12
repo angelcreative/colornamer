@@ -125,9 +125,13 @@ function showAlert(message) {
   const alertBox = document.getElementById('custom-alert');
   const alertMessage = document.getElementById('alert-message');
 
-  // Set the message in the alert box
-  alertMessage.textContent = message;
-  alertBox.style.display = 'block';  // Show the alert box
+ // Set the message in the alert box
+alertMessage.textContent = message;
+alertBox.style.display = 'flex';  // Show the alert box
+alertBox.style.flexDirection = 'column';  // Set flex direction to column
+alertBox.style.alignItems = 'stretch';  // Align items to stretch
+alertBox.style.gap = '24px';  // Set gap between elements
+
 
   // Close the alert when the user clicks the button
   const alertOkButton = document.getElementById('alert-ok');
