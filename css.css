@@ -389,6 +389,7 @@ body {
     /* padding: 0; */
     /* margin: 0; */
     align-items: center;
+	background:linear-gradient(133deg, transparent, var(--background-secondary), var(--background-primary))
 }
 sub, a {
     display: inline-block;
