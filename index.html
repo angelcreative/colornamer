@@ -635,28 +635,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5.5.1/dist/iro.min.js"></script>
     <script src="https://roomdesaigner.onrender.com/static/ntc.js"></script>
     <script src="js.js"></script> <!-- Tu propio archivo de script -->
-<script>const toggleSwitch = document.getElementById('theme-toggle');
 
-// Verificar el tema actual almacenado en localStorage
-const currentTheme = localStorage.getItem('theme');
-if (currentTheme) {
-  document.documentElement.setAttribute('data-theme', currentTheme);
-
-  // Si el tema es oscuro, marcar el switch como activo
-  if (currentTheme === 'dark') {
-    toggleSwitch.checked = true;
-  }
-}
-
-toggleSwitch.addEventListener('change', function() {
-  if (this.checked) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    localStorage.setItem('theme', 'dark');  // Guardar en localStorage
-  } else {
-    document.documentElement.setAttribute('data-theme', 'light');
-    localStorage.setItem('theme', 'light');  // Guardar en localStorage
-  }
-});
-</script>
 </body>
 </html>
