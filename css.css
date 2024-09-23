@@ -1300,6 +1300,12 @@ background: linear-gradient(180deg, transparent, var(--background-secondary), va
     display: flex;
     flex-direction: column;
     gap: 16px;    width: -webkit-fill-available;
+    position:relative;
+}
+
+
+.portfolio-card > .icon-tag {
+    left: 86%;
 }
 
 .assets-card {
